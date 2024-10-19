@@ -7,127 +7,152 @@ import "./App.css";
 function App() {
   return (
     <>
-
-      {/* <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-        
-      </div>
-      <h1>Vite + React</h1> */}
-      {/* <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
-      {/* <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit amet, quae autem eos nesciunt aspernatur ratione praesentium tenetur, tempora dicta reiciendis natus? Nesciunt voluptate nemo in vel? Autem, molestiae et.</p> */}
       <div className="sidebar">
-        <div className="profile-section">
-          <img src={reactLogo} alt="Profile pic" className="profile-pic" />
-          <h3>Ghulam Abubaker</h3>
-          <div class="social-icons">
-            <a href="https://wa.me/+923447066974" target="_blank">
-              <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/yourprofile" target="_blank">
-              <i className="fab fa-linkedin"></i>
-            </a>
-            <a href="https://www.instagram.com/yourprofile" target="_blank">
-              <i className="fab fa-instagram"></i>
-            </a>
-          </div>
-        </div>
-        <nav>
-          <ul className="nav-links">
-            <li>
-              <i className="fas fa-user-circle"></i>
-              <a href="#">Home</a>
-            </li>
-            <li>
-              <a href="#">About</a>
-            </li>
-            <li>
-              <a href="#">Services</a>
-            </li>
-            <li>
-              <a href="#">Resume</a>
-            </li>
-            <li>
-              <a href="#">Contact</a>
-            </li>
-          </ul>
-        </nav>
+        <ProfileSection />
+        <Navigation />
       </div>
-      <div className="main-content">
-
-        <div class="intro">
-          <p>
-            Hello I'm Ghulam AbuBaker, a Quantity Serveyour Engineer in KEO
-            International Consultant in Saudia Arabia.
-          </p>
-          <p>
-            I am a fully qualified Quantity Surveyour with over 15 years of
-            professional experience.
-          </p>
-        </div>
-        <div>
-
-          <h3>Education</h3>
-          <p>
-            MSC Quantity Surveyour <br />
-            Bachelor of Technology(B-Tech Hons) Civil Engineering University,
-            Islamabad, Pakistan, 2013 <br />
-            Diploma of Associate Engineer(Civil Technology) Punjab, Pakistan, 2007
-            <br />
-            Secondary School Certificate Punjab, Pakistan 2004
-          </p>
-        </div>
-        <div>
-
-          <h3>Profession</h3>
-          <p>Civil Engineer/Quantity Surveyour</p>
-          <h3>Nationality</h3>
-          <p>Pakistani</p>
-        </div>
-        <div>
-          <h3>Membership</h3>
-          <p>
-            Pakistan National Technology Council(NTC) <br />
-            Saudi Council of Engineers(SEC) <br />
-            Quantity Survey Association of Pakistan(QSAP)
-          </p>
-        </div>
-        <h3>Skills</h3>
-        <p>
-          Microsoft Office <br />
-          AutoCAD 2D, 3D & Civil 3D <br />
-          Autodesk Revit <br />
-          Photoshop
-        </p>
-
-        <div className="contact">
-          <h3>Contact</h3>
-          <h5>Email Us</h5>
-          <div className="circle">
-
-            <i class="fab fa-github"></i>
-            <a href="mailto:turabali2007@yahoo.com" target="_blank" class="transform">turabali2007@yahoo.com</a>
-            <br />
-            <i class="fab fa-whatsapp"></i>
-            <a href="https://wa.me/+923447066974" target="_blank" class="transform">+92-344-7066974</a>
-          </div>
-        </div>
-
-      </div>
-      <footer>
-        <map name=""></map>
-      </footer>
-      <footer class="footer1">
-        &copy; <b>Ghulam Abubaker</b> {new Date().getFullYear()} All rights
-        reserved.
-      </footer>
+      <MainContent />
+      <Footer />
     </>
+  );
+}
+
+function ProfileSection() {
+  return (
+    <div className="profile-section">
+      <img src={reactLogo} alt="Profile" className="profile-pic" />
+      <h3>Ghulam Abubaker</h3>
+      <div className="social-icons">
+        <a href="https://wa.me/+923447066974" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-whatsapp" aria-label="WhatsApp"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-linkedin" aria-label="LinkedIn"></i>
+        </a>
+        <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-instagram" aria-label="Instagram"></i>
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function Navigation() {
+  const navLinks = [
+    { name: 'Home', icon: 'fas fa-home' },
+    { name: 'About', icon: 'fas fa-user' },
+    { name: 'Services', icon: 'fas fa-cog' },
+    { name: 'Resume', icon: 'fas fa-file-alt' },
+    { name: 'Contact', icon: 'fas fa-envelope' },
+  ];
+
+  return (
+    <nav>
+      <ul className="nav-links">
+        {navLinks.map(link => (
+          <li key={link.name}>
+            <i className={link.icon}></i>
+            <a href="#">{link.name}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
+function MainContent() {
+  return (
+    <div className="main-content">
+      <Intro />
+      <Education />
+      <ProfessionalDetails />
+      <Skills />
+      <Contact />
+    </div>
+  );
+}
+
+function Intro() {
+  return (
+    <div className="intro">
+      <p>
+        Hello, I'm Ghulam AbuBaker, a Quantity Surveyor Engineer at KEO
+        International Consultant in Saudi Arabia.
+      </p>
+      <p>
+        I am a fully qualified Quantity Surveyor with over 15 years of
+        professional experience.
+      </p>
+    </div>
+  );
+}
+
+function Education() {
+  return (
+    <div>
+      <h3>Education</h3>
+      <p>
+        MSC Quantity Surveying <br />
+        B.Tech (Hons) Civil Engineering, University of Islamabad, Pakistan, 2013 <br />
+        Diploma of Associate Engineer (Civil Technology), Punjab, Pakistan, 2007 <br />
+        Secondary School Certificate, Punjab, Pakistan, 2004
+      </p>
+    </div>
+  );
+}
+
+function ProfessionalDetails() {
+  return (
+    <div>
+      <h3>Profession</h3>
+      <p>Civil Engineer / Quantity Surveyor</p>
+      <h3>Nationality</h3>
+      <p>Pakistani</p>
+      <h3>Membership</h3>
+      <p>
+        Pakistan National Technology Council (NTC) <br />
+        Saudi Council of Engineers (SEC) <br />
+        Quantity Survey Association of Pakistan (QSAP)
+      </p>
+    </div>
+  );
+}
+
+function Skills() {
+  return (
+    <div>
+      <h3>Skills</h3>
+      <p>
+        Microsoft Office <br />
+        AutoCAD (2D, 3D & Civil 3D) <br />
+        Autodesk Revit <br />
+        Photoshop
+      </p>
+    </div>
+  );
+}
+
+function Contact() {
+  return (
+    <div className="contact">
+      <h3>Contact</h3>
+      <h5>Email Us</h5>
+      <div className="circle">
+        <i className="fab fa-github" aria-label="GitHub"></i>
+        <a href="mailto:turabali2007@yahoo.com" className="transform">turabali2007@yahoo.com</a>
+        <br />
+        <i className="fab fa-whatsapp" aria-label="WhatsApp"></i>
+        <a href="https://wa.me/+923447066974" className="transform">+92-344-7066974</a>
+      </div>
+    </div>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="footer1">
+      &copy; <b>Ghulam Abubaker</b> {new Date().getFullYear()} All rights reserved.
+    </footer>
   );
 }
 
