@@ -1,16 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
+import { CircleLoader } from "react-spinners"// Import the spinner component
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false); // Set loading to false after 2 seconds
+    }); // Simulate a loading delay of 2 seconds
+
+    return () => clearTimeout(timer); // Cleanup the timer on component unmount
+  }, []);
+
   return (
     <>
-      <div className="sidebar">
-        <ProfileSection />
-        <Navigation />
-      </div>
-      <MainContent />
-      <Footer />
+      {isLoading ? (
+        <div className="loading-container">
+          <CircleLoader color="#3498db" loading={isLoading} size={70} />
+        </div>
+      ) : (
+        <div className="app-content">
+          <div className="sidebar">
+            <ProfileSection />
+            <Navigation />
+          </div>
+          <MainContent />
+          <Footer />
+        </div>
+      )}
     </>
   );
 }
