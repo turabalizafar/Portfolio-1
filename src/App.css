@@ -4,6 +4,39 @@
   padding: 2rem;
   text-align: center;
 } */
+ nav{
+  background: #333;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+ }
+
+ .menu-icon {
+  font-size: 24px;
+  cursor: pointer;
+  display: none;
+
+ }
+
+ .menu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+
+ }
+
+ .menu li{
+  margin: 0 10px;
+ }
+
+ .menu li a {
+  text-decoration: none;
+  color: white;
+ }
 
 @media screen and (max-width: 768px) {
   .menu-icons{
@@ -28,10 +61,6 @@
     text-align: center;
   }
 
-}
-
-.menu-bars{
-  display: none;
 }
 
 .footer1 {

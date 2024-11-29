@@ -37,9 +37,9 @@ function App() {
 function menu_bars(){
   return (
     <nav>
-      <div className="fas fa-bars" onClick={toggleMenu()}>
+      <div class="menu-icon" onClick={toggleMenu()}>
     </div>
-    <ul class="MenuItems" id="menu">
+    <ul class="menu" id="menu">
       <li><a href="#" className="fas fa-home">Home</a></li>
       <li><a href="#" className="fas fa-user">About</a></li>
       <li><a href="#" className="fas fa-cog">Projects</a></li>
