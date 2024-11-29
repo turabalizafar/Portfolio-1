@@ -34,6 +34,24 @@ function App() {
   );
 }
 
+function menu_bars(){
+  return (
+    <nav>
+      <div className="fas fa-bars" onClick={toggleMenu()}>
+    </div>
+    <ul class="MenuItems" id="menu">
+      <li><a href="#" className="fas fa-home">Home</a></li>
+      <li><a href="#" className="fas fa-user">About</a></li>
+      <li><a href="#" className="fas fa-cog">Projects</a></li>
+      <li><a href="#" className="fas fa-file-alt">Resume</a></li>
+      <li><a href="#" className="fas fa-envelope">Contact</a></li>
+    </ul>
+    <script src="script.js"></script>
+    </nav>
+    
+  );
+}
+
 function ProfileSection() {
   return (
     <div className="profile-section">
@@ -58,7 +76,7 @@ function Navigation() {
   const navLinks = [
     { name: 'Home', icon: 'fas fa-home' },
     { name: 'About', icon: 'fas fa-user' },
-    { name: 'Services', icon: 'fas fa-cog' },
+    { name: 'Projects', icon: 'fas fa-cog' },
     { name: 'Resume', icon: 'fas fa-file-alt' },
     { name: 'Contact', icon: 'fas fa-envelope' },
   ];

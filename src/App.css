@@ -5,6 +5,35 @@
   text-align: center;
 } */
 
+@media screen and (max-width: 768px) {
+  .menu-icons{
+    display: block;
+  }
+  .menu{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background: #333;
+    width: 200px;
+    padding: 10px 0px;
+  }
+  .menu.active{
+    display: flex;
+  }
+  .menu li{
+    margin: 10px 0;
+    list-style-type: none;
+    text-align: center;
+  }
+
+}
+
+.menu-bars{
+  display: none;
+}
+
 .footer1 {
   background-color: burlywood;
   text-align: center;
