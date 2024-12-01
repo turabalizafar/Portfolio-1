@@ -1,56 +1,90 @@
 import React, { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
-import { CircleLoader } from "react-spinners"// Import the spinner component
+import { CircleLoader } from "react-spinners";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false); // Set loading to false after 2 seconds
-    }); // Simulate a loading delay of 2 seconds
-
-    return () => clearTimeout(timer); // Cleanup the timer on component unmount
-  }, []);
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   return (
-    <>
-      {isLoading ? (
-        <div className="loading-container">
-          <CircleLoader color="#3498db" loading={isLoading} size={70} />
+    <div className="app">
+      {/* Sidebar */}
+      <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
+        <ProfileSection />
+        <Navigation />
+      </div>
+
+      {/* Main Content */}
+      <div className={`main-content ${isSidebarOpen ? "shifted" : ""}`}>
+        <div className="menu-icon" onClick={toggleSidebar}>
+          <i className={`fas ${isSidebarOpen ? "fa-times" : "fa-bars"}`}></i>
         </div>
-      ) : (
-        <div className="app-content">
-          <div className="sidebar">
-            <ProfileSection />
-            <Navigation />
-          </div>
-          <MainContent />
-          <Footer />
-        </div>
-      )}
-    </>
+        <Header />
+        <MainContent />
+        <Footer />
+      </div>
+    </div>
   );
 }
 
-function menu_bars(){
+function Header({ toggleSidebar }) {
+  return (
+    <header>
+      <div className="menu-icon" onClick={toggleSidebar}>
+        <i className="fas fa-bars"></i>
+      </div>
+    </header>
+  );
+}
+
+
+function toggleSidebar(){
+  const navLinks = [
+    { name: 'Home', icon: 'fas fa-home' },
+    { name: 'About', icon: 'fas fa-user' },
+    { name: 'Projects', icon: 'fas fa-cog' },
+    { name: 'Resume', icon: 'fas fa-file-alt' },
+    { name: 'Contact', icon: 'fas fa-envelope' },
+  ];
   return (
     <nav>
-      <div class="menu-icon" onClick={toggleMenu()}>
+      
+    <div className="profile-section">
+      <img src={reactLogo} alt="Profile" className="profile-pic" />
+      <h3>Ghulam Abubaker</h3>
+      <div className="social-icons">
+        <a href="https://wa.me/+923447066974" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-whatsapp" aria-label="WhatsApp"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-linkedin" aria-label="LinkedIn"></i>
+        </a>
+        <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-instagram" aria-label="Instagram"></i>
+        </a>
+      </div>
     </div>
-    <ul class="menu" id="menu">
-      <li><a href="#" className="fas fa-home">Home</a></li>
-      <li><a href="#" className="fas fa-user">About</a></li>
-      <li><a href="#" className="fas fa-cog">Projects</a></li>
-      <li><a href="#" className="fas fa-file-alt">Resume</a></li>
-      <li><a href="#" className="fas fa-envelope">Contact</a></li>
-    </ul>
+    <nav>
+      <ul className="nav-links">
+        {navLinks.map(link => (
+          <li key={link.name}>
+            <i className={link.icon}></i>
+            <a href="#">{link.name}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
     <script src="script.js"></script>
     </nav>
     
   );
 }
+
+
 
 function ProfileSection() {
   return (
