@@ -1,32 +1,55 @@
 import React, { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
+import "./pop.js";
 import { CircleLoader } from "react-spinners";
+import { Swiper, SwiperSlide } from "swiper/react";
+import 'swiper/swiper-bundle.css'
+import microsoft from "./assets/microsoft.jpg";
+import autocad from "./assets/autocad.jpg";
+import photoshop from "./assets/photoshop.jpg";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }); 
+
+    return () => clearTimeout(timer); // Cleanup the timer on component unmount
+  }, []);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
   return (
-    <div className="app">
-      {/* Sidebar */}
-      <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
-        <ProfileSection />
-        <Navigation />
-      </div>
-
-      {/* Main Content */}
-      <div className={`main-content ${isSidebarOpen ? "shifted" : ""}`}>
-        <div className="menu-icon" onClick={toggleSidebar}>
-          <i className={`fas ${isSidebarOpen ? "fa-times" : "fa-bars"}`}></i>
+    <div className="app-content">
+      {isLoading ? (
+        <div className="loading-container">
+          <CircleLoader color="#3498db" loading={isLoading} size={70} />
         </div>
-        <Header />
-        <MainContent />
-        <Footer />
-      </div>
+      ) : (
+        <div className="app">
+          {/* Sidebar */}
+          <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
+            <ProfileSection />
+            <Navigation />
+          </div>
+
+          {/* Main Content */}
+          <div className="main-content">
+            <div className="menu-icon" onClick={toggleSidebar}>
+              <i className={`fas ${isSidebarOpen ? "fa-times" : "fa-bars"}`}></i>
+            </div>
+            <Header toggleSidebar={toggleSidebar} />
+            <MainContent />
+            <Footer />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -35,7 +58,7 @@ function Header({ toggleSidebar }) {
   return (
     <header>
       <div className="menu-icon" onClick={toggleSidebar}>
-        <i className="fas fa-bars"></i>
+        {/* <i className="fas fa-bars"></i> */}
       </div>
     </header>
   );
@@ -78,7 +101,7 @@ function toggleSidebar(){
         ))}
       </ul>
     </nav>
-    <script src="script.js"></script>
+    {/* <script src="script.js"></script> */}
     </nav>
     
   );
@@ -108,9 +131,9 @@ function ProfileSection() {
 
 function Navigation() {
   const navLinks = [
-    { name: 'Home', icon: 'fas fa-home' },
+    { name: 'Home', icon: 'fas fa-home', link: 'intro' },
     { name: 'About', icon: 'fas fa-user' },
-    { name: 'Projects', icon: 'fas fa-cog' },
+    { name: 'Projects', icon: 'fas fa-cog', link: 'projects' },
     { name: 'Resume', icon: 'fas fa-file-alt' },
     { name: 'Contact', icon: 'fas fa-envelope' },
   ];
@@ -136,6 +159,7 @@ function MainContent() {
       <Education />
       <ProfessionalDetails />
       <Skills />
+      <Projects />
       <Contact />
     </div>
   );
@@ -145,12 +169,7 @@ function Intro() {
   return (
     <div className="intro">
       <p>
-        Hello, I'm Ghulam AbuBaker, a Quantity Surveyor Engineer at KEO
-        International Consultant in Saudi Arabia.
-      </p>
-      <p>
-        I am a fully qualified Quantity Surveyor with over 15 years of
-        professional experience.
+      Hello, my name is Ghulam AbuBaker, and I am a highly experienced Quantity Surveyor Engineer currently working at KEO International Consultants in Saudi Arabia. With over 15 years of professional experience, I have honed my expertise in cost management, project budgeting, and financial control across various large-scale projects. My role involves ensuring accurate cost estimation, managing contracts, and maintaining financial transparency throughout the project lifecycle. As a fully qualified Quantity Surveyor, I am well-versed in industry standards and practices, consistently delivering value and efficiency in every project I undertake. I specialize in both pre-contract and post-contract services, from tendering to final account settlement. My extensive experience has equipped me with the skills to handle complex projects and deliver cost-effective solutions.
       </p>
     </div>
   );
@@ -158,7 +177,7 @@ function Intro() {
 
 function Education() {
   return (
-    <div>
+    <div className="education">
       <h3>Education</h3>
       <p>
         MSC Quantity Surveying <br />
@@ -170,9 +189,35 @@ function Education() {
   );
 }
 
+function Projects() {
+  return (
+     <div className="projects">
+
+<h3 className="proj">Projects</h3>
+<div className="project1">
+  <h4>Project 1</h4>
+  <p></p>
+</div>
+<div className="project1">
+<h4>Project 2</h4>
+<p></p>
+</div>
+<div className="project1">
+<h4>Project 3</h4>
+<p></p>
+</div>
+<div className="project1">
+<h4>Project 4</h4>
+<p></p>
+</div>
+
+</div>
+  );
+}
+
 function ProfessionalDetails() {
   return (
-    <div>
+    <div className="professional-details">
       <h3>Profession</h3>
       <p>Civil Engineer / Quantity Surveyor</p>
       <h3>Nationality</h3>
@@ -183,24 +228,32 @@ function ProfessionalDetails() {
         Saudi Council of Engineers (SEC) <br />
         Quantity Survey Association of Pakistan (QSAP)
       </p>
+      <h3 className="skills">Skills</h3>
     </div>
   );
 }
 
 function Skills() {
+  const images = [
+    microsoft, autocad, photoshop
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+    }, 2000);
+
+    return () => clearInterval(interval); // Cleanup the interval on component unmount
+  }, [images.length]);
+
   return (
-    <div>
-      <h3>Skills</h3>
-      <p>
-        Microsoft Office <br />
-        AutoCAD (2D, 3D & Civil 3D) <br />
-        Autodesk Revit <br />
-        Photoshop
-      </p>
+    <div className="slider">
+      <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} />
     </div>
   );
 }
-
 function Contact() {
   return (
     <div className="contact">

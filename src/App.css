@@ -1,7 +1,7 @@
-
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .main-content {
     display: inline;
+    margin-left: 0;
   }
 
   .sidebar {
@@ -9,15 +9,16 @@
     height: 100%;
     width: 250px;
     top: 0;
-    left: -250px; /* Hidden by default */
+    left: -250px; 
     background-color: black;
     padding: 20px;
     transition: left 0.3s ease;
     z-index: 1000;
+
   }
 
   .sidebar.open {
-    left: 0; /* Slide in when open */
+    left: 0; 
   }
 
   .fas.fa-bars {
@@ -37,46 +38,191 @@
   }
 
   .fas.fa-bars:hover {
-    background-color: #333;
     color: skyblue;
     transition: all 0.3s ease;
   }
+
+  .main-content {
+    margin-left: 0px; 
+  }
+
+
+  
 }
 
 @media screen and (min-width: 769px) {
   .fas.fa-bars {
-    display: none; /* Hide bars on larger screens */
+    display: none;  Hide bars on larger screens 
+  }
+
+  .sidebar {
+    left: 0;  Ensure sidebar is always visible on larger screens 
+  }
+
+  .main-content {
+    margin-left: 130px;  Adjust main content margin for larger screens 
+  }
+} */
+
+
+@media only screen and (min-width:1440px){
+  /* css for desktop devices */
+  .fas.fa-bars {
+    display: none;
+  }
+
+  .sidebar {
+    left: 0;
+  }
+
+  .footer1 {
+    
   }
 }
 
-.main-content {
-  /* Ensure main content stays in default position */
-  margin-left: 0;
+@media only screen and (min-width:1024px) and (max-width:1439px){
+  /* css for laptop devices */
+  .fas.fa-bars {
+    display: none;
+  }
+
+  .sidebar {
+    left: 0;   
+  }
 }
 
+@media only screen and (min-width:768px) and (max-width:1023px){
+  /* css for tablet devices */
+  .fas.fa-bars {
+    top: 10px;
+    right: 10px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media only screen and (man-width:767px){
+  /* css for mobile devices */
+  .fas.fa-bars {
+    top: 10px;
+    right: 10px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+
+}
+
+body {
+  margin-left: 260px;
+  font-family: 'Times New Roman', Times, serif;
+  background-image: none;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  padding: 30px;
+}
+
+
+
+.projects{
+  background-image: url("./assets/projects-bg.jpg");
+  opacity: 0.8;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 50vh;
+  padding: 0;
+  margin: 0;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+}
+
+.proj {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: background-color 0.5s;
+}
+
+.project1 {
+  width:fit-content;
+  height: fit-content;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
+img {
+  
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  transition: transform 0.5s;
+  border-radius: 5px;
+}
+
+.skills {
+  text-align: center;
+}
 
 .footer1 {
-  background-color: burlywood;
+  background-color: black;
   text-align: center;
-  color: black;
+  color: white;
   text-decoration: underline;
-  padding: 1rem;
-  margin-left: 290px;
+  padding: 30px;
+  padding-right: 50px;
+  margin: 0px;
 }
 
 .main-content {
-  margin-left: 270px;
   padding: 20px;
+  transition: margin-left 0.3s ease;
 }
 
 .sidebar {
   position: fixed;
-  height: 100%;
+  height: 110%;
+  flex-direction: column;
   top: 0;
   left: 0;
   background-color: black;
   padding: 45px;
-  overflow-y: auto;
+  overflow: visible;
   z-index: 100;
 }
 
@@ -96,15 +242,16 @@
   margin-bottom: 15px;
 }
 
+.nav-links {
+  list-style-type: none;
+  padding: 0;
+}
+
 .nav-links li {
   margin: 15px 0;
   padding-top: 10px;
   padding-bottom: 10px;
-}
-
-.nav-links {
-  list-style-type: none;
-  padding: 0;
+  overflow-y: auto;
 }
 
 .nav-links li a {
@@ -162,7 +309,6 @@
   font-size: large;
   color: black;
   text-decoration: none;
-  border: 50%;
 }
 
 .circle a:hover {
