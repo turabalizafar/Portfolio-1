@@ -93,47 +93,129 @@
 
 @media only screen and (min-width:768px) and (max-width:1023px){
   /* css for tablet devices */
-  .fas.fa-bars {
-    top: 10px;
-    right: 10px;
-    background-color: black;
-    color: white;
-    text-align: center;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  body {
+    margin-left: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background-image: none;
+    background-color: rgba(17, 17, 16, 0.1);
   }
+
+  .main-content {
+    padding: 0;
+    transition: margin-left 0.3s ease;
+  }
+
+ .fas.fa-bars {
+  color: yellow;
+  background-color: black;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  width: 40px;
+  letter-spacing: 2px;
+  line-height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+ }
+
+ .fas.fa-times {
+  color: yellow;
+  background-color: black;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  width: 40px;
+  letter-spacing: 2px;
+  line-height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+ }
 }
 
-@media only screen and (man-width:767px){
+@media only screen and (max-width:767px){
   /* css for mobile devices */
+  body {
+    margin-left: 260px;
+    font-family: 'Times New Roman', Times, serif;
+    background-image: none;
+    background-color: rgba(17, 17, 16, 0.1);
+  }
+
+  .main-content {
+    padding: 0;
+    transition: margin-left 0.3s ease;
+  }
+
   .fas.fa-bars {
-    top: 10px;
-    right: 10px;
+    color: yellow;
     background-color: black;
-    color: white;
-    text-align: center;
+    height: 40px;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
+    text-align: center;
+    width: 40px;
+    letter-spacing: 2px;
+    line-height: 40px;
     font-size: 20px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+    margin: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+   }
+  
+   .fas.fa-times {
+    color: yellow;
+    background-color: black;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    width: 40px;
+    letter-spacing: 2px;
+    line-height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+   }
 
+   .sidebar {
+    position: fixed;
+    height: 110vh;
+  top: 0;
+  left: -260px;
+  background-color: black;
+  padding: 45px;
+  overflow: visible;
+  transition: left 0.3s ease-in-out;
+}
+
+.sidebar.open {
+  left: 0;
 
 }
+}
+
+
 
 body {
   margin-left: 260px;
   font-family: 'Times New Roman', Times, serif;
   background-image: none;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(17, 17, 16, 0.1);
 }
 
 .slider {
@@ -144,10 +226,8 @@ body {
   width: 80%;
   margin: auto;
   overflow: hidden;
-  padding: 30px;
+  padding: 20px;
 }
-
-
 
 .projects{
   background-image: url("./assets/projects-bg.jpg");
